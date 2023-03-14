@@ -218,7 +218,7 @@ const BLOG = {
   DESCRIPTION: process.env.NEXT_PUBLIC_DESCRIPTION || 'blog.gcoo.io', // 站点描述，被notion中的页面描述覆盖
 
   // 网站图片
-  IMG_URL_TYPE: process.env.NEXT_PUBLIC_IMG_TYPE || 'Notion', // ['Notion','AMAZON'] 站点图片前缀 默认 Notion:(https://notion.so/images/xx) ， AMAZON(https://s3.us-west-2.amazonaws.com/xxx)
+  IMG_URL_TYPE: process.env.NEXT_PUBLIC_IMG_TYPE || 'AMAZON', // ['Notion','AMAZON'] 站点图片前缀 默认 Notion:(https://notion.so/images/xx) ， AMAZON(https://s3.us-west-2.amazonaws.com/xxx)
 
   // 开发相关
   NOTION_ACCESS_TOKEN: process.env.NOTION_ACCESS_TOKEN || '', // Useful if you prefer not to make your database public
