@@ -1,29 +1,17 @@
 import CommonHead from '@/components/CommonHead'
-import { useCallback, useEffect, useState } from 'react'
-import throttle from 'lodash.throttle'
+import { useEffect, useState } from 'react'
+
 import Footer from './components/Footer'
 import JumpToTopButton from './components/JumpToTopButton'
 import SideRight from './components/SideRight'
 import TopNav from './components/TopNav'
+import smoothscroll from 'smoothscroll-polyfill'
 import FloatDarkModeButton from './components/FloatDarkModeButton'
 import Live2D from '@/components/Live2D'
 import LoadingCover from './components/LoadingCover'
 import { useGlobal } from '@/lib/global'
 import BLOG from '@/blog.config'
-import dynamic from 'next/dynamic'
-
-const FacebookPage = dynamic(
-  () => {
-    let facebook = <></>
-    try {
-      facebook = import('@/components/FacebookPage')
-    } catch (err) {
-      console.error(err)
-    }
-    return facebook
-  },
-  { ssr: false }
-)
+import FacebookPage from '@/components/FacebookPage'
 
 /**
  * 基础布局 采用左右两侧布局，移动端使用顶部导航栏
@@ -33,7 +21,7 @@ const FacebookPage = dynamic(
  */
 const LayoutBase = props => {
   const { children, headerSlot, floatSlot, meta, siteInfo } = props
-  const [showFloatButton, switchShow] = useState(false)
+  const [show, switchShow] = useState(false)
   // const [percent, changePercent] = useState(0) // 页面阅读百分比
   const rightAreaSlot = (
     <>
@@ -42,8 +30,8 @@ const LayoutBase = props => {
     </>
   )
   const { onLoading } = useGlobal()
-  const throttleMs = 200
-  const scrollListener = useCallback(throttle(() => {
+
+  const scrollListener = () => {
     const targetRef = document.getElementById('wrapper')
     const clientHeight = targetRef?.clientHeight
     const scrollY = window.pageYOffset
@@ -52,40 +40,45 @@ const LayoutBase = props => {
     if (per > 100) per = 100
     const shouldShow = scrollY > 100 && per > 0
 
-    if (shouldShow !== showFloatButton) {
+    if (shouldShow !== show) {
       switchShow(shouldShow)
     }
-  }, throttleMs))
+    // changePercent(per)
+  }
   useEffect(() => {
+    smoothscroll.polyfill()
     document.addEventListener('scroll', scrollListener)
     return () => document.removeEventListener('scroll', scrollListener)
-  }, [])
+  }, [show])
 
   return (
-    <div id='theme-hexo'>
+    <div className="bg-hexo-background-gray dark:bg-black">
       <CommonHead meta={meta} siteInfo={siteInfo}/>
 
       <TopNav {...props} />
 
       {headerSlot}
 
-      <main id="wrapper" className="bg-hexo-background-gray dark:bg-black w-full py-8 md:px-8 lg:px-24 min-h-screen relative">
+      <main id="wrapper" className="w-full pt-8 pb-56 px-4 lg:px-6 min-h-screen">
         <div
           id="container-inner"
-          className={(BLOG.LAYOUT_SIDEBAR_REVERSE ? 'flex-row-reverse' : '') + ' pt-14 w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'}
+          className="pt-12 w-full mx-auto lg:flex lg:space-x-4 justify-center"
         >
-          <div className="w-full max-w-4xl h-full">
+          <div className="w-full max-w-5xl">
             {onLoading ? <LoadingCover /> : children}
           </div>
-          <SideRight {...props} slot={rightAreaSlot} />
         </div>
       </main>
 
       {/* 右下角悬浮 */}
-      <div className={(showFloatButton ? 'opacity-100 ' : 'invisible opacity-0') + '  duration-300 transition-all bottom-12 right-1 fixed justify-end z-20  text-white bg-indigo-500 dark:bg-hexo-black-gray rounded-sm'}>
-        <div className={'justify-center  flex flex-col items-center cursor-pointer'}>
+      <div className="bottom-12 right-1 fixed justify-end z-20 font-sans text-white bg-green-600 dark:bg-hexo-black-gray rounded-sm">
+        <div
+          className={
+            (show ? 'animate__animated ' : 'hidden') +
+            ' animate__fadeInUp justify-center duration-300  animate__faster flex flex-col items-center cursor-pointer '
+          }
+        >
           <FloatDarkModeButton />
-          {floatSlot}
           <JumpToTopButton />
         </div>
       </div>
