@@ -69,32 +69,32 @@ const SearchInput = props => {
         ref={searchInputRef}
         type="text"
         className={
-          'outline-none w-full text-sm pl-5 rounded-lg transition focus:shadow-lg dark:text-gray-300 font-light leading-10 text-black bg-gray-100 dark:bg-gray-500'
+          'w-full h-16 text-xl pl-5 focus:outline-green-800 rounded-lg transition focus:shadow-lg dark:text-gray-300 font-light leading-10 text-black bg-gray-200 dark:bg-gray-500'
         }
         onKeyUp={handleKeyUp}
         onCompositionStart={lockSearchInput}
         onCompositionUpdate={lockSearchInput}
         onCompositionEnd={unLockSearchInput}
-        placeholder={locale.SEARCH.ARTICLES}
+        placeholder='검색어를 입력해 주세요.'
         onChange={e => updateSearchKey(e.target.value)}
         defaultValue={currentSearch || ''}
       />
 
       <div
-        className="-ml-8 cursor-pointer  float-right items-center justify-center py-2"
+        className="-ml-12 cursor-pointer  float-right flex items-center justify-center py-2"
         onClick={handleSearch}
       >
         <i
-          className={`hover:text-black transform duration-200 text-gray-500 dark:text-gray-200 cursor-pointer fas ${
+          className={`hover:text-black transform duration-200 text-gray-500 dark:text-gray-200 text-2xl cursor-pointer fas ${
             onLoading ? 'fa-spinner animate-spin' : 'fa-search'
           }`}
         />
       </div>
 
       {showClean && (
-        <div className="-ml-12 cursor-pointer float-right items-center justify-center py-2">
+        <div className="-ml-20 cursor-pointer float-right flex items-center justify-center py-2">
           <i
-            className="hover:text-black transform duration-200 text-gray-400 dark:text-gray-300 cursor-pointer fas fa-times"
+            className="hover:text-black transform duration-200 text-gray-400 dark:text-gray-300 text-xl cursor-pointer fas fa-times-circle"
             onClick={cleanSearch}
           />
         </div>

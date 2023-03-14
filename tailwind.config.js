@@ -12,10 +12,10 @@ module.exports = {
           DEFAULT: BLOG.BACKGROUND_LIGHT || '#ffffff'
         },
         night: {
-          DEFAULT: BLOG.BACKGROUND_DARK || '#111827'
+          DEFAULT: BLOG.BACKGROUND_DARK || '#ffffff'
         },
         hexo: {
-          'background-gray': '#f5f5f5',
+          'background-gray': '#ffffff',
           'black-gray': '#101414',
           'light-gray': '#e5e5e5'
         }

@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from 'react'
 import throttle from 'lodash.throttle'
 import Footer from './components/Footer'
 import JumpToTopButton from './components/JumpToTopButton'
-import SideRight from './components/SideRight'
 import TopNav from './components/TopNav'
 import FloatDarkModeButton from './components/FloatDarkModeButton'
 import Live2D from '@/components/Live2D'
@@ -69,20 +68,19 @@ const LayoutBase = props => {
 
       {headerSlot}
 
-      <main id="wrapper" className="bg-hexo-background-gray dark:bg-black w-full py-8 md:px-8 lg:px-24 min-h-screen relative">
-        <div
+      <main id="wrapper" className="w-full pt-8 pb-56 px-4 lg:px-6 min-h-screen">
+      <div
           id="container-inner"
-          className={(BLOG.LAYOUT_SIDEBAR_REVERSE ? 'flex-row-reverse' : '') + ' pt-14 w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'}
+          className="pt-12 w-full mx-auto lg:flex lg:space-x-4 justify-center"
         >
-          <div className="w-full max-w-4xl h-full">
+          <div className="w-full max-w-5xl">
             {onLoading ? <LoadingCover /> : children}
           </div>
-          <SideRight {...props} slot={rightAreaSlot} />
         </div>
       </main>
 
       {/* 右下角悬浮 */}
-      <div className={(showFloatButton ? 'opacity-100 ' : 'invisible opacity-0') + '  duration-300 transition-all bottom-12 right-1 fixed justify-end z-20  text-white bg-indigo-500 dark:bg-hexo-black-gray rounded-sm'}>
+      <div className={(showFloatButton ? 'opacity-100 ' : 'invisible opacity-0') + '  duration-300 transition-all bottom-12 right-1 fixed justify-end z-20  text-white bg-green-600 dark:bg-hexo-black-gray rounded-sm'}>
         <div className={'justify-center  flex flex-col items-center cursor-pointer'}>
           <FloatDarkModeButton />
           {floatSlot}

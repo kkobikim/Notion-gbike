@@ -6,12 +6,9 @@ import Catalog from './Catalog'
 import { InfoCard } from './InfoCard'
 import { AnalyticsCard } from './AnalyticsCard'
 import CONFIG_HEXO from '../config_hexo'
+import HexoRecentComments from './HexoRecentComments'
 import BLOG from '@/blog.config'
-import dynamic from 'next/dynamic'
-import Announcement from './Announcement'
-import { useGlobal } from '@/lib/global'
 
-const HexoRecentComments = dynamic(() => import('./HexoRecentComments'))
 /**
  * Hexo主题右侧栏
  * @param {*} props
@@ -20,19 +17,18 @@ const HexoRecentComments = dynamic(() => import('./HexoRecentComments'))
 export default function SideRight(props) {
   const {
     post, currentCategory, categories, latestPosts, tags,
-    currentTag, showCategory, showTag, slot, notice
+    currentTag, showCategory, showTag, slot
   } = props
 
-  const { locale } = useGlobal()
   return (
     <div className={'space-y-4 lg:w-80 lg:pt-0 px-2 pt-4'}>
-      <InfoCard {...props} />
+     
       {CONFIG_HEXO.WIDGET_ANALYTICS && <AnalyticsCard {...props} />}
 
       {showCategory && (
         <Card>
-          <div className='ml-2 mb-1 '>
-            <i className='fas fa-th' /> {locale.COMMON.CATEGORY}
+          <div className='ml-2 mb-1 font-sans'>
+            <i className='fas fa-th' /> 分类
           </div>
           <CategoryGroup
             currentCategory={currentCategory}
@@ -48,8 +44,6 @@ export default function SideRight(props) {
       {CONFIG_HEXO.WIDGET_LATEST_POSTS && latestPosts && latestPosts.length > 0 && <Card>
         <LatestPostsGroup {...props} />
       </Card>}
-
-      <Announcement post={notice}/>
 
       {BLOG.COMMENT_WALINE_SERVER_URL && BLOG.COMMENT_WALINE_RECENT && <HexoRecentComments/>}
 

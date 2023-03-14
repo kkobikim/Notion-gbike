@@ -9,8 +9,6 @@ import { useGlobal } from '@/lib/global'
  * @returns
  */
 export default function ArticleRecommend({ recommendPosts, siteInfo }) {
-  const { locale } = useGlobal()
-
   if (
     !CONFIG_HEXO.ARTICLE_RECOMMEND ||
     !recommendPosts ||
@@ -18,11 +16,11 @@ export default function ArticleRecommend({ recommendPosts, siteInfo }) {
   ) {
     return <></>
   }
-
+  const { locale } = useGlobal()
   return (
     <div className="p-2">
-      <div className=" mb-2 px-1 flex flex-nowrap justify-between">
-        <div className='dark:text-gray-300'>
+      <div className="font-sans mb-2 px-1 flex flex-nowrap justify-between">
+        <div>
           <i className="mr-2 fas fa-thumbs-up" />
           {locale.COMMON.RELATE_POSTS}
         </div>
@@ -34,29 +32,33 @@ export default function ArticleRecommend({ recommendPosts, siteInfo }) {
             : `url("${siteInfo?.pageCover}")`
 
           return (
-            (<Link
+            <Link
               key={post.id}
               title={post.title}
               href={`${BLOG.SUB_PATH}/${post.slug}`}
               passHref
-              className="flex h-40 cursor-pointer overflow-hidden">
-
-              <div
-                className="h-full w-full bg-cover bg-center bg-no-repeat hover:scale-110 transform duration-200"
-                style={{ backgroundImage: headerImage }}
+              legacyBehavior
+            >
+              <a
+                key={post.id}
+                className="flex h-40 cursor-pointer overflow-hidden"
               >
-                <div className="flex items-center justify-center bg-black bg-opacity-60 hover:bg-opacity-10 w-full h-full duration-300 ">
-                  <div className=" text-sm  text-white text-center shadow-text">
-                    <div>
-                      <i className="fas fa-calendar-alt mr-1" />
-                      {post.date?.start_date}
+                <div
+                  className="h-full w-full bg-cover bg-center bg-no-repeat hover:scale-110 transform duration-200"
+                  style={{ backgroundImage: headerImage }}
+                >
+                  <div className="flex items-center justify-center bg-black bg-opacity-60 hover:bg-opacity-10 w-full h-full duration-300 ">
+                    <div className="font-sans text-sm  text-white text-center shadow-text">
+                      <div>
+                        <i className="fas fa-calendar-alt mr-1" />
+                        {post.date?.start_date}
+                      </div>
+                      <div className="hover:underline">{post.title}</div>
                     </div>
-                    <div className="hover:underline">{post.title}</div>
                   </div>
                 </div>
-              </div>
-
-            </Link>)
+              </a>
+            </Link>
           )
         })}
       </div>
