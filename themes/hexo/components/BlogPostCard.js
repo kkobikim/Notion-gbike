@@ -2,64 +2,66 @@ import BLOG from '@/blog.config'
 import Link from 'next/link'
 import React from 'react'
 import CONFIG_HEXO from '../config_hexo'
-import NotionPage from '@/components/NotionPage'
+import { BlogPostCardInfo } from './BlogPostCardInfo'
+// import Image from 'next/image'
 
-const BlogPostCard = ({ post, showSummary }) => {
+const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
   const showPreview = CONFIG_HEXO.POST_LIST_PREVIEW && post.blockMap
+  if (post && !post.page_cover && CONFIG_HEXO.POST_LIST_COVER_DEFAULT) {
+    post.page_cover = siteInfo?.pageCover
+  }
+  const showPageCover = CONFIG_HEXO.POST_LIST_COVER && post?.page_cover
+  const delay = (index % 2) * 200
+
   return (
-    <Link href={`${BLOG.SUB_PATH}/article/${post.slug}`} passHref>
-    <div className="w-ful cursor-pointer duration-300">
-      <div
+    <div
         key={post.id}
-        className="notion-card animate__animated animate__fadeIn flex sm:flex-row justify-between duration-300 flex-col-reverse"
-      >
-        <div className="p-4 pr-8 flex flex-col w-full">
-              <a className="cursor-pointer my-2 font-light text-gray-500 dark:text-gray-300 text-sm transform">
-                {post.category}
-              </a>
-            <a
-              className={`replace cursor-pointer notion-card-text text-2xl font-sans ${showPreview ? 'text-center' : ''
-                } leading-tight font-medium text-gray-700 dark:text-gray-100`}
-            >
-              {post.title}
-            </a>
+        className={`flex md:flex-row flex-col-reverse ${CONFIG_HEXO.POST_LIST_IMG_CROSSOVER ? 'even:md:flex-row-reverse' : ''}
+        w-full justify-between overflow-hidden
+        border dark:border-black rounded-xl bg-white dark:bg-hexo-black-gray`}>
 
-          {(!showPreview || showSummary) && (
-            <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: '4', WebkitBoxOrient: 'vertical' }}
-              className="replace max-h-32 my-2 text-gray-500  dark:text-gray-300 text-m font-light leading-7">
-              {post.summary}
-            </p>
-          )}
+        {/* 文字内容 */}
+        <div
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay={delay}
+            data-aos-once="true"
+            data-aos-anchor-placement="top-bottom"
+            className={`flex flex-col justify-start lg:p-6 p-4 md:max-h-60 ${showPageCover ? 'md:w-7/12 w-full ' : 'w-full'}`}>
 
+            <BlogPostCardInfo post={post} showPreview={showPreview} showSummary={showSummary}/>
 
-            <div
-            className={`flex mt-2 items-center ${showPreview ? 'justify-center' : 'justify-start'
-              } flex-wrap dark:text-gray-500 text-gray-400`}
-             >
-              <a className="font-light cursor-pointer text-sm leading-4 mr-3">
-                {post.date?.start_date || post.lastEditedTime}
-              </a>
-          </div>
-
-          {showPreview && (
-            <div className="overflow-ellipsis truncate">
-              <NotionPage post={post} />
-            </div>
-          )}
         </div>
 
-            <div className="flex notion-card-hover h-44 sm:w-96 w-full relative duration-200 rounded-2lg cursor-pointer transform">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={post?.page_cover}
-                alt={post.title}
-                className="max-h-52 h-44 w-full rounded-2lg transform object-cover duration-200"
-              />
-              {/* <Image className='hover:scale-125 rounded-t-xl lg:rounded-r-xl lg:rounded-t-none transform duration-500' src={post?.page_cover} alt={post.title} layout='fill' objectFit='cover' loading='lazy' /> */}
+         {/* 图片封面 */}
+        {showPageCover && !showPreview && post?.page_cover && (
+           <div className="h-auto md:w-5/12">
+                <Link href={`${BLOG.SUB_PATH}/${post.slug}`} passHref legacyBehavior>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {/* <img
+                        src={post?.page_cover}
+                        alt={post.title}
+                        loading='lazy'
+                        className="w-full relative cursor-pointer object-cover duration-200 hover:scale-125 "
+                    /> */}
+                    <div className='bg-center bg-cover md:h-full h-52' style={{ backgroundImage: `url(${post?.page_cover})` }}/>
+
+                    {/* <div className='relative w-full h-full'>
+                    <Image
+                     className='hover:scale-125 transition cursor-pointer duration-500'
+                     src={post?.page_cover}
+                     alt={post.title}
+                     quality={30}
+                     placeholder='blur'
+                     blurDataURL='/bg_image.jpg'
+                     style={{ objectFit: 'cover' }}
+                     fill/>
+                    </div> */}
+                </Link>
             </div>
-     
-      </div>
-    </div></Link>
+        )}
+
+    </div>
   )
 }
 

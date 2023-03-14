@@ -9,8 +9,6 @@ import { LayoutCategoryIndex } from './LayoutCategoryIndex'
 import { LayoutPage } from './LayoutPage'
 import { LayoutTag } from './LayoutTag'
 import { LayoutTagIndex } from './LayoutTagIndex'
-import { LayoutApp } from './LayoutApp'
-
 
 export {
   CONFIG_HEXO as THEME_CONFIG,
@@ -23,6 +21,5 @@ export {
   LayoutCategoryIndex,
   LayoutPage,
   LayoutTag,
-  LayoutTagIndex,
-  LayoutApp
+  LayoutTagIndex
 }
