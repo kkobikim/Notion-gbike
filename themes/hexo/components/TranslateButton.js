@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
+// components/TranslateButton.js
+import React, { useState } from 'react'
+import axios from 'axios'
 
-const TranslateButton = ({ content }) => {
-  const [translatedContent, setTranslatedContent] = useState(content);
+const getBrowserLanguage = () => {
+  const language = navigator.language || navigator.userLanguage
+  return language
+}
 
-  const getBrowserLanguage = () => {
-    return navigator.language || navigator.userLanguage;
-  };
+const translateText = async (text, targetLanguage) => {
+  const apiUrl = `https://openapi.naver.com/v1/papago/n2mt`
+  const sourceLanguage = 'ko'
 
-  const translateContent = async () => {
-    const browserLanguage = getBrowserLanguage();
-    const response = await fetch('https://openapi.naver.com/v1/papago/n2mt', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'X-Naver-Client-Id': 'WQdE4NOH_Gt6GpbfLQ9E',
-        'X-Naver-Client-Secret': 'f6grx1UfPg',
-      },
-      body: `source=ko&target=${browserLanguage.slice(0, 2)}&text=${encodeURIComponent(content)}`,
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      setTranslatedContent(data.message.result.translatedText);
+  const response = await axios.post(apiUrl, `source=${sourceLanguage}&target=${targetLanguage}&text=${encodeURIComponent(text)}`, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      'X-Naver-Client-Id': 'WQdE4NOH_Gt6GpbfLQ9E',
+      'X-Naver-Client-Secret': 'f6grx1UfPg',
     }
-  };
+  })
+
+  const translatedText = response.data.message.result.translatedText
+  return translatedText
+}
+
+const TranslateButton = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleClick = async () => {
+    setIsLoading(true)
+    const browserLanguage = getBrowserLanguage()
+    const targetLanguage = browserLanguage.substring(0, 2)
+
+    const notionTextElements = document.querySelectorAll('.notion-text')
+
+    for (const element of notionTextElements) {
+      const translatedText = await translateText(element.innerText, targetLanguage)
+      element.innerText = translatedText
+    }
+
+    setIsLoading(false)
+  }
 
   return (
-    <div className="notion-text">
-      {translatedContent}
-      <button onClick={translateContent}>번역하기</button>
-    </div>
-  );
-};
+    <button className="translate-button" onClick={handleClick} disabled={isLoading}>
+      {isLoading ? '번역 중...' : '번역'}
+    </button>
+  )
+}
 
-export default TranslateButton;
+export default TranslateButton
+

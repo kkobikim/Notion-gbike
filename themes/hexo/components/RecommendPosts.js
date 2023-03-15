@@ -23,7 +23,7 @@ const RecommendPosts = ({ recommendPosts }) => {
                 className="cursor-pointer h-25 md:h-40 w-1/3 rounded-2lg transform object-cover duration-200 border-white md:hover:-translate-y-2 md:hover:shadow-xl"
                 
               />
-              <Link href={`/${post.slug}`}>
+              <Link href={`/${post.slug}`} legacyBehavior>
               <div className="flex flex-col w-full pr-8">
               <a className="cursor-pointer my-2 font-light text-gray-500 dark:text-gray-300 text-sm transform">
                 {post.category}

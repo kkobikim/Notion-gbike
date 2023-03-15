@@ -8,7 +8,7 @@ const TagItem = ({ tag, selected }) => {
     <div> { locale.COMMON.NOTAG } </div>
   }
   return (
-  <Link href={selected ? '/' : `/tag/${encodeURIComponent(tag.name)}`} passHref>
+  <Link href={selected ? '/' : `/tag/${encodeURIComponent(tag.name)}`} passHref legacyBehavior>
     <li
       className={`notion-${tag.color}_background dark:bg-gray-700 list-none cursor-pointer rounded-md  
       duration-200 mr-1 my-1 px-2 py-1 text-sm whitespace-nowrap 

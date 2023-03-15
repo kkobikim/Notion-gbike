@@ -83,7 +83,7 @@ const TopNav = props => {
         <section className='mt-8'>
           <div className='text-sm flex flex-nowrap justify-between font-light px-2'>
             <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-th-list' />{locale.COMMON.CATEGORY}</div>
-            <Link href={'/category'} passHref>
+            <Link href={'/category'} passHref legacyBehavior>
               <a className='mb-3 text-gray-400 md:hover:text-black dark:text-gray-400 dark:md:hover:text-white md:hover:underline cursor-pointer'>
                 {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
               </a>

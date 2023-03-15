@@ -27,6 +27,7 @@ const PaginationNumber = ({ page, totalPage }) => {
           query: router.query.s ? { s: router.query.s } : {}
         }}
         passHref
+        legacyBehavior
       >
         <div
           rel="prev"
@@ -46,6 +47,7 @@ const PaginationNumber = ({ page, totalPage }) => {
           query: router.query.s ? { s: router.query.s } : {}
         }}
         passHref
+        legacyBehavior
       >
         <div
           rel="next"
