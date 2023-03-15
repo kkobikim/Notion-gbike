@@ -1,52 +1,58 @@
-// components/TranslateButton.js
-import React, { useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const getBrowserLanguage = () => {
-  const language = navigator.language || navigator.userLanguage
-  return language
-}
+const TranslateButton = ({ notionText }) => {
+  const [browserLanguage, setBrowserLanguage] = useState(null);
+  const client_id = 'WQdE4NOH_Gt6GpbfLQ9E';
+  const client_secret = 'f6grx1UfPg';
+  const supportedLanguages = ['en', 'zh-CN', 'zh-TW', 'es', 'fr', 'vi', 'th', 'id'];
 
-const translateText = async (text, targetLanguage) => {
-  const apiUrl = `https://openapi.naver.com/v1/papago/n2mt`
-  const sourceLanguage = 'ko'
-
-  const response = await axios.post(apiUrl, `source=${sourceLanguage}&target=${targetLanguage}&text=${encodeURIComponent(text)}`, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      'X-Naver-Client-Id': 'WQdE4NOH_Gt6GpbfLQ9E',
-      'X-Naver-Client-Secret': 'f6grx1UfPg',
+  useEffect(() => {
+    if (window && window.navigator) {
+      let lang = window.navigator.language.slice(0, 2);
+      if (lang === 'ko' || !supportedLanguages.includes(lang)) {
+        lang = 'en';
+      }
+      setBrowserLanguage(lang);
     }
-  })
+  }, []);
 
-  const translatedText = response.data.message.result.translatedText
-  return translatedText
-}
+  const handleTranslate = async () => {
+    // 파파고 API 호출 및 번역 처리 코드 작성
+    const api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+    const data = new FormData();
+    data.append('source', 'ko');
+    data.append('target', browserLanguage);
+    data.append('text', notionText);
 
-const TranslateButton = () => {
-  const [isLoading, setIsLoading] = useState(false)
+    try {
+      const response = await axios.post(api_url, data, {
+        headers: {
+          'X-Naver-Client-Id': client_id,
+          'X-Naver-Client-Secret': client_secret,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-  const handleClick = async () => {
-    setIsLoading(true)
-    const browserLanguage = getBrowserLanguage()
-    const targetLanguage = browserLanguage.substring(0, 2)
-
-    const notionTextElements = document.querySelectorAll('.notion-text')
-
-    for (const element of notionTextElements) {
-      const translatedText = await translateText(element.innerText, targetLanguage)
-      element.innerText = translatedText
+      if (response.status === 200) {
+        const translatedText = response.data.message.result.translatedText;
+        // notion-text 클래스를 가진 모든 요소에 번역된 텍스트 적용
+        document.querySelectorAll('.notion-text').forEach((element, index) => {
+          element.innerText = translatedText[index];
+        });
+      } else {
+        console.error('error = ' + response.status);
+      }
+    } catch (error) {
+      console.error('error = ' + error);
     }
-
-    setIsLoading(false)
-  }
+  };
 
   return (
-    <button className="translate-button" onClick={handleClick} disabled={isLoading}>
-      {isLoading ? '번역 중...' : '번역'}
+    <button onClick={handleTranslate}>
+      {browserLanguage ? `번역 (${browserLanguage})` : '번역'}
     </button>
-  )
-}
+  );
+};
 
-export default TranslateButton
-
+export default TranslateButton;
