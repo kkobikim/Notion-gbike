@@ -183,3 +183,8 @@ nav {
     display: none;
   }
 }
+
+.notion-callout .notion-gray_background_co{
+  border: 0px;
+  background-color: none;
+}
