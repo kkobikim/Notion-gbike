@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const TranslateButton = ({ notionText }) => {
   const [browserLanguage, setBrowserLanguage] = useState(null);
@@ -18,35 +17,36 @@ const TranslateButton = ({ notionText }) => {
   }, []);
 
   const handleTranslate = async () => {
-    // 파파고 API 호출 및 번역 처리 코드 작성
-    const api_url = 'https://openapi.naver.com/v1/papago/n2mt';
-    const data = new FormData();
-    data.append('source', 'ko');
-    data.append('target', browserLanguage);
-    data.append('text', notionText);
-
+    const api_url = './api/translate';
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'source': 'ko',
+        'target': browserLanguage,
+        'text': notionText,
+      }),
+    };
+  
     try {
-      const response = await axios.post(api_url, data, {
-        headers: {
-          'X-Naver-Client-Id': client_id,
-          'X-Naver-Client-Secret': client_secret,
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      if (response.status === 200) {
-        const translatedText = response.data.message.result.translatedText;
+      const response = await fetch(api_url, requestOptions);
+      if (response.ok) {
+        const data = await response.json();
+        const translatedText = data.message.result.translatedText;
         // notion-text 클래스를 가진 모든 요소에 번역된 텍스트 적용
         document.querySelectorAll('.notion-text').forEach((element, index) => {
           element.innerText = translatedText[index];
         });
       } else {
-        console.error('error = ' + response.status);
+        console.error('Error:', response.status);
       }
     } catch (error) {
-      console.error('error = ' + error);
+      console.error('Error:', error);
     }
   };
+  
 
   return (
     <button onClick={handleTranslate}>
