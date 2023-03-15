@@ -28,8 +28,8 @@ export const LayoutSlug = props => {
         const url = 'https://openapi.naver.com/v1/papago/n2mt'
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'X-Naver-Client-Id': PAPAGO_API_KEY,
-            'X-Naver-Client-Secret': PAPAGO_API_KEY
+            'X-Naver-Client-Id': WQdE4NOH_Gt6GpbfLQ9E,
+            'X-Naver-Client-Secret': f6grx1UfPg,
         }
         const data = `source=ko&target=${targetLang}&text=${encodeURIComponent(content)}`
 
