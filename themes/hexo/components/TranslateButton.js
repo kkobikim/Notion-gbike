@@ -3,34 +3,16 @@ import axios from 'axios';
 import qs from 'querystring';
 
 const Papago = {
-  config: {
-    NAVER_CLIENT_ID: 'WQdE4NOH_Gt6GpbfLQ9E',
-    NAVER_CLIENT_SECRET: 'f6grx1UfPg',
-  },
-
-  async lookup(term, targetLanguage) {
-    const url = 'papago/n2mt';
-
-    const params = qs.stringify({
-      source: 'ko',
-      target: targetLanguage,
-      text: term,
-    });
-
-    const config = {
-      baseURL: 'https://openapi.naver.com/v1/',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'X-Naver-Client-Id': this.config.NAVER_CLIENT_ID,
-        'X-Naver-Client-Secret': this.config.NAVER_CLIENT_SECRET,
-      },
-    };
-
-    const response = await axios.post(url, params, config);
-
-    return response.data.message.result.translatedText;
-  },
-};
+    async lookup(term, targetLanguage) {
+      const response = await axios.post('./api/translate', {
+        source: 'ko',
+        target: targetLanguage,
+        text: term,
+      });
+  
+      return response.data.translatedText;
+    },
+  };
 
 const TranslateButton = ({ content, setContent }) => {
   const [loading, setLoading] = useState(false);
