@@ -185,6 +185,7 @@ nav {
 }
 
 .notion-callout .notion-gray_background_co{
-  border: 0px;
-  background-color: none;
+  border: 0px !important;
+  background-color: none !important;
+  
 }
