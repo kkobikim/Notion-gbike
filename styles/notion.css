@@ -917,6 +917,10 @@ svg.notion-page-icon {
   margin: 4px 0;
   border: 1px solid var(--fg-color-0);
 }
+.notion-callout .notion-gray_background_co{
+  border: 0px;
+  background-color: none;
+}
 
 .dark-mode .notion-callout {
   border-color: var(--bg-color-2);
