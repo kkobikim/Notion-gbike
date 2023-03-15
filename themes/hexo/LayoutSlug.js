@@ -11,10 +11,9 @@ import TagItemMini from './components/TagItemMini'
 import RecommendPosts from './components/RecommendPosts'
 import ArticleAdjacent from './components/ArticleAdjacent'
 import { isBrowser } from '@/lib/utils'
-import TranslateButton from './components/TranslateButton'
 
 export const LayoutSlug = props => {
-  const { post, recommendPosts, lock, validPassword, showArticleInfo, content, setContent } = props
+  const { post, recommendPosts, lock, validPassword, showArticleInfo } = props
   const drawerRight = useRef(null)
   if (!post) {
     return <LayoutBase
@@ -54,7 +53,6 @@ export const LayoutSlug = props => {
           <article itemScope itemType="https://schema.org/Movie" className="subpixel-antialiased" >
             {/* Notion文章主体 */}
             <section id='notion-article' className='px-5 justify-center mx-auto max-w-2xl lg:max-w-full pb-10'>
-            <TranslateButton content={content} setContent={setContent} />
               {post && <NotionPage post={post} />}
             </section>
 
