@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const completion = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
         messages: [
-          { role: 'system', content: 'Please translate it into English. Please translate Ziku into GCOO and Zikuter into Gcooter.' },
+          { role: 'system', content: 'Please translate it into English. Please translate 지쿠 into GCOO and 지쿠터 into Gcooter.' },
           { role: 'user', content: text },
         ],
       });
