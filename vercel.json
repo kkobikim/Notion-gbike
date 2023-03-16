@@ -3,3 +3,10 @@
   "trailingSlash": false,
   "headers": []
 }
+{
+  "functions": {
+    "api/test.js": {
+      "maxDuration": 60
+    }
+  }
+}
