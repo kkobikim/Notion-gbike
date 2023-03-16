@@ -1,55 +1,57 @@
-// components/TranslateButton.js
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const TranslateButton = ({ post, onTranslated }) => {
-  const [loading, setLoading] = useState(false);
+const TranslateButton = () => {
+  const [translatedText, setTranslatedText] = useState(null);
+  const [translating, setTranslating] = useState(false);
 
-  const translateContent = async () => {
-    setLoading(true);
+  const extractText = () => {
+    const articleSection = document.getElementById('notion-article');
+    const textBlocks = Array.from(articleSection.querySelectorAll('.notion-text'));
+    return textBlocks.map(block => block.textContent).join(' ');
+  };
+
+  const handleTranslate = async () => {
+    if (translating) return;
+
+    setTranslating(true);
+    const text = extractText();
+
     try {
-      // ChatGPT API 호출을 위한 설정값을 추가하세요.
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`, // 여기에 API 키를 추가하세요.
-        },
-      };
-
-      // 번역을 원하는 post.content를 보내고 번역된 내용을 받습니다.
-      const response = await axios.post(
-        'https://api.openai.com/v1/engines/davinci-codex/completions', // ChatGPT API 엔드포인트
-        {
-          model: 'text-davinci-002', // 사용할 모델을 설정하세요.
-          prompt: `Translate the following Korean text to English: "${post.content}"`,
-          max_tokens: 1000, // 번역 결과의 최대 길이 설정
-          n: 1, // 생성할 결과 개수
-          stop: null,
-          temperature: 0.8, // 결과의 다양성 설정
-        },
-        config
-      );
-
-      const translatedText = response.data.choices[0].text;
-
-      // 번역된 결과를 상위 컴포넌트에 전달합니다.
-      onTranslated({ ...post, content: translatedText });
+      const response = await axios.post('/api/translate', { text });
+      setTranslatedText(response.data.translatedText);
+      setTranslating(false);
     } catch (error) {
-      console.error('Error translating content:', error);
-    } finally {
-      setLoading(false);
+      console.error('Error translating text:', error);
+      setTranslating(false);
     }
   };
 
   return (
-    <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      onClick={translateContent}
-      disabled={loading}
-    >
-      {loading ? '번역 중...' : '번역하기'}
-    </button>
+    <>
+      <button
+        onClick={handleTranslate}
+        disabled={translating || translatedText !== null}
+      >
+        {translating ? (
+          <>
+            <span className="animate-spin text-blue-500 material-icons">sync</span>
+            {' '}
+            ChatGPT로 AI 번역중입니다...
+          </>
+        ) : translatedText ? (
+          '번역완료'
+        ) : (
+          '번역하기'
+        )}
+      </button>
+      {translatedText && (
+        <div className="mt-4 p-4 bg-gray-100 rounded">
+          <h3 className="font-bold mb-2">번역된 내용:</h3>
+          <p>{translatedText}</p>
+        </div>
+      )}
+    </>
   );
 };
 
