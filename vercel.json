@@ -1,8 +1,12 @@
-
 {
-  "functions": {
-    "api/translate.js": {
-      "maxDuration": 60
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": []
+  {
+    "functions": {
+      "api/translate.js": {
+        "maxDuration": 60
+      }
     }
   }
 }
