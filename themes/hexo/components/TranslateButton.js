@@ -40,9 +40,9 @@ const TranslateButton = () => {
             ChatGPT로 AI 번역중입니다...
           </>
         ) : translatedText ? (
-          '번역완료'
+          'AI번역완료'
         ) : (
-          '번역하기'
+          'AI번역하기'
         )}
       </button> <span class="bg-yellow-100 text-yellow-800 text-xs font-medium ml-2 mb-2 px-2 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">베타</span>
       {translatedText && (
