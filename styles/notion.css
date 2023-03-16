@@ -1958,26 +1958,26 @@ pre[class*='language-'] {
 }
 
 .notion-block-20811349b6894127a9018f7f0721041c {
-  margin-top:80px;
-  background-color: transparent;
-  border: 0px;
+  margin-top:80px !important;
+  background-color: transparent !important;
+  border: 0px !important;
   }
   
 .notion-block-20811349b6894127a9018f7f0721041c .notion-page-icon-inline {
-display: none;
+display: none !important;
 }
 .notion-block-20811349b6894127a9018f7f0721041c .notion-asset-wrapper-image img{
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 .notion-block-20811349b6894127a9018f7f0721041c .notion-asset-wrapper-image{
-  padding: 10px 10px 20px 10px;
+  padding: 10px 10px 20px 10px !important;
 }
 .notion-block-20811349b6894127a9018f7f0721041c .notion-text {
-  text-align : center;
-   letter-spacing: -0.02em;
+  text-align : center !important;
+   letter-spacing: -0.02em !important;
 }
 .notion-block-20811349b6894127a9018f7f0721041c .notion-text b{
-  font-size: 1.4em;
+  font-size: 1.4em !important;
 }
 
 .notion-block-29f5014a792b481d9089867a43fbbc41 {
@@ -2005,51 +2005,51 @@ display: none;
 
 
 .notion-block-f047c604103d4c839222514e149d9366 {
-  margin-top:80px;
-  background-color: transparent;
-  border: 0px;
+  margin-top:80px !important;
+  background-color: transparent !important;
+  border: 0px !important;
   }
 .notion-block-f047c604103d4c839222514e149d9366 .notion-page-icon-inline {
-display: none;
+display: none !important;
 }
 .notion-block-f047c604103d4c839222514e149d9366 .notion-asset-wrapper-image img{
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 .notion-block-f047c604103d4c839222514e149d9366 .notion-asset-wrapper-image{
-  padding: 10px 10px 20px 10px;
+  padding: 10px 10px 20px 10px !important;
 }
 .notion-block-f047c604103d4c839222514e149d9366 .notion-text {
-  text-align : center;
-   letter-spacing: -0.02em;
+  text-align : center !important;
+   letter-spacing: -0.02em !important;
 }
 .notion-block-f047c604103d4c839222514e149d9366 .notion-text b{
-  font-size: 1.4em;
+  font-size: 1.4em !important;
 }
 
 
 
 
 .notion-block-80964c7fbd3a48cfa13acc573255c68e {
-  margin-top:80px;
-  background-color: transparent;
-  border: 0px;
-  padding: 15px 25px 0 25px;
+  margin-top:80px !important;
+  background-color: transparent !important;
+  border: 0px !important;
+  padding: 15px 25px 0 25px !important;
   }
 .notion-block-80964c7fbd3a48cfa13acc573255c68e .notion-page-icon-inline {
-display: none;
+display: none !important;
 }
 .notion-block-80964c7fbd3a48cfa13acc573255c68e .notion-asset-wrapper-image img{
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 .notion-block-80964c7fbd3a48cfa13acc573255c68e .notion-asset-wrapper-image{
-  padding: 10px 10px 20px 10px;
+  padding: 10px 10px 20px 10px !important;
 }
 .notion-block-80964c7fbd3a48cfa13acc573255c68e .notion-text {
-  text-align : center;
-   letter-spacing: -0.02em;
+  text-align : center !important;
+   letter-spacing: -0.02em !important;
 }
 .notion-block-80964c7fbd3a48cfa13acc573255c68e .notion-text b{
-  font-size: 1.4em;
+  font-size: 1.4em !important;
 }
 
 .notion-asset-wrapper img{
