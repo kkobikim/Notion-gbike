@@ -44,7 +44,7 @@ const TranslateButton = () => {
         ) : (
           '번역하기'
         )}
-      </button>
+      </button> <span class="bg-yellow-100 text-yellow-800 text-xs font-medium ml-2 mb-2 px-2 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">베타</span>
       {translatedText && (
         <div className="mt-4 p-4 bg-gray-100 rounded">
           <h3 className="font-bold mb-2">번역된 내용:</h3>
