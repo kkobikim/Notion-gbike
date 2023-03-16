@@ -1,7 +1,6 @@
 {  
     "functions": { 
-        "/pages/api/*.js" : {
-            "memory": 1024,
+        "pages/api/translate.js" : {
             "maxDuration": 60
         }
     },
