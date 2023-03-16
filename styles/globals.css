@@ -184,8 +184,6 @@ nav {
   }
 }
 
-.notion-callout .notion-gray_background_co{
-  border: 0px !important;
-  background-color: none !important;
-  
-}
+.notion-yt-lite {
+  background-color: transparent !important;
+  }
