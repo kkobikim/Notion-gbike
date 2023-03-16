@@ -5,7 +5,7 @@
 }
 {
   "functions": {
-    "api/test.js": {
+    "api/translate.js": {
       "maxDuration": 60
     }
   }
