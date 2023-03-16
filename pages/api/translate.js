@@ -1,4 +1,3 @@
-// pages/api/translate.js
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
@@ -38,6 +37,3 @@ export default async function handler(req, res) {
     res.status(500).json({ message: 'Server error' });
   }
 }
-
-
-
