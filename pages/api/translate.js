@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -11,16 +11,16 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { text } = req.body;
+  const { text, targetLanguage } = req.body;
 
   try {
     const completion = await openai.createChatCompletion({
-        model: 'gpt-3.5-turbo',
-        messages: [
-          { role: 'system', content: '지쿠 is GCOO ,지쿠터 is Gcooter, Please translate it into English.' },
-          { role: 'user', content: text },
-        ],
-      });
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'system', content: `Translate the text to ${targetLanguage}.` },
+        { role: 'user', content: text },
+      ],
+    });
 
     const translatedText = completion.data.choices[0].message.content;
 
