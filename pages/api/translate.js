@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `Translate the text to ${targetLanguage}.` },
+        { role: 'system', content: `지쿠는 GCOO , 지쿠터는 Gcooter 로 보여줘, Translate the text to ${targetLanguage}.` },
         { role: 'user', content: text },
       ],
     });
