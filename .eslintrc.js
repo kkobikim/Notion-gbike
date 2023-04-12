@@ -29,6 +29,9 @@ module.exports = {
     'react/prop-types': 'off',
     'space-before-function-paren': 0,
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'quotes': 'off',
+    'semi': 'off',
+    'comma-dangle': 'off'
   },
   globals: {
     React: true
