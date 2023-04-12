@@ -1,6 +1,6 @@
-import busuanzi from '@/lib/busuanzi'
+import busuanzi from '/lib/busuanzi'
 import { useRouter } from 'next/router'
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 // import { useRouter } from 'next/router'
 import React from 'react'
 
