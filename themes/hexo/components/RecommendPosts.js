@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 
 /**
  * 展示文章推荐

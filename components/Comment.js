@@ -1,50 +1,50 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import dynamic from 'next/dynamic'
-import Tabs from '@/components/Tabs'
+import Tabs from '/components/Tabs'
 import React from 'react'
 import { useRouter } from 'next/router'
 
 const WalineComponent = dynamic(
   () => {
-    return import('@/components/WalineComponent')
+    return import('/components/WalineComponent')
   },
   { ssr: false }
 )
 
 const CusdisComponent = dynamic(
   () => {
-    return import('@/components/CusdisComponent')
+    return import('/components/CusdisComponent')
   },
   { ssr: false }
 )
 
 const TwikooCompenent = dynamic(
   () => {
-    return import('@/components/Twikoo')
+    return import('/components/Twikoo')
   },
   { ssr: false }
 )
 
 const GitalkComponent = dynamic(
   () => {
-    return import('@/components/Gitalk')
+    return import('/components/Gitalk')
   },
   { ssr: false }
 )
 const UtterancesComponent = dynamic(
   () => {
-    return import('@/components/Utterances')
+    return import('/components/Utterances')
   },
   { ssr: false }
 )
 const GiscusComponent = dynamic(
   () => {
-    return import('@/components/Giscus')
+    return import('/components/Giscus')
   },
   { ssr: false }
 )
 
-const ValineComponent = dynamic(() => import('@/components/ValineComponent'), {
+const ValineComponent = dynamic(() => import('/components/ValineComponent'), {
   ssr: false
 })
 

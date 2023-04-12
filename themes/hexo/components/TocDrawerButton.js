@@ -1,4 +1,4 @@
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 import React from 'react'
 import CONFIG_HEXO from '../config_hexo'
 

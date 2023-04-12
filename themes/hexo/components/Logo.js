@@ -1,4 +1,4 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import Link from 'next/link'
 import React from 'react'
 

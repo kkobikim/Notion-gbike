@@ -1,8 +1,8 @@
-import { getGlobalNotionData } from '@/lib/notion/getNotionData'
-import { useGlobal } from '@/lib/global'
-import { getDataFromCache } from '@/lib/cache/cache_manager'
-import * as ThemeMap from '@/themes'
-import BLOG from '@/blog.config'
+import { getGlobalNotionData } from '/lib/notion/getNotionData'
+import { useGlobal } from '/lib/global'
+import { getDataFromCache } from '/lib/cache/cache_manager'
+import * as ThemeMap from '/themes'
+import BLOG from '/blog.config'
 
 const Index = props => {
   const { keyword, siteInfo } = props

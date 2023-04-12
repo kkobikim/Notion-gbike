@@ -6,11 +6,11 @@ import TocDrawer from './components/TocDrawer'
 import TocDrawerButton from './components/TocDrawerButton'
 import LayoutBase from './LayoutBase'
 import ShareBar from './components/ShareBar'
-import NotionPage from '@/components/NotionPage'
+import NotionPage from '/components/NotionPage'
 import TagItemMini from './components/TagItemMini'
 import RecommendPosts from './components/RecommendPosts'
 import ArticleAdjacent from './components/ArticleAdjacent'
-import { isBrowser } from '@/lib/utils'
+import { isBrowser } from '/lib/utils'
 import TranslateButton from './components/TranslateButton';
 
 export const LayoutSlug = props => {

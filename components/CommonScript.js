@@ -1,4 +1,4 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 
 /**
  * 第三方代码 统计脚本

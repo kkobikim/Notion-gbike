@@ -1,4 +1,4 @@
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 
 /**
  * 加密文章校验组件

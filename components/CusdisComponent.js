@@ -1,6 +1,6 @@
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 import { ReactCusdis } from 'react-cusdis'
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import { useRouter } from 'next/router'
 
 const CusdisComponent = ({ frontMatter }) => {

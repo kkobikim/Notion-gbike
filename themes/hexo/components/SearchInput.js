@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useImperativeHandle, useRef, useState } from 'react'
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 let lock = false
 
 const SearchInput = props => {

@@ -1,4 +1,4 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import { FacebookProvider, Page } from 'react-facebook'
 import { FacebookIcon } from 'react-share'
 

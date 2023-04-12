@@ -1,21 +1,21 @@
-import CommonHead from '@/components/CommonHead'
+import CommonHead from '/components/CommonHead'
 import { useCallback, useEffect, useState } from 'react'
 import throttle from 'lodash.throttle'
 import Footer from './components/Footer'
 import JumpToTopButton from './components/JumpToTopButton'
 import TopNav from './components/TopNav'
 import FloatDarkModeButton from './components/FloatDarkModeButton'
-import Live2D from '@/components/Live2D'
+import Live2D from '/components/Live2D'
 import LoadingCover from './components/LoadingCover'
-import { useGlobal } from '@/lib/global'
-import BLOG from '@/blog.config'
+import { useGlobal } from '/lib/global'
+import BLOG from '/blog.config'
 import dynamic from 'next/dynamic'
 
 const FacebookPage = dynamic(
   () => {
     let facebook = <></>
     try {
-      facebook = import('@/components/FacebookPage')
+      facebook = import('/components/FacebookPage')
     } catch (err) {
       console.error(err)
     }

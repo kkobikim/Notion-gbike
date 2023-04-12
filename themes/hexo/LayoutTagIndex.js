@@ -1,4 +1,4 @@
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 import Card from './components/Card'
 import TagItemMini from './components/TagItemMini'
 import LayoutBase from './LayoutBase'

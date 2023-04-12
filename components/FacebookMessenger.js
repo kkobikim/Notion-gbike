@@ -1,4 +1,4 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import MessengerCustomerChat from 'react-messenger-customer-chat'
 
 const Messenger = () => (

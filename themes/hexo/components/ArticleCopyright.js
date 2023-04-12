@@ -1,5 +1,5 @@
-import BLOG from '@/blog.config'
-import { useGlobal } from '@/lib/global'
+import BLOG from '/blog.config'
+import { useGlobal } from '/lib/global'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'

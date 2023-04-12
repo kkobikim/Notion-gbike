@@ -2,17 +2,17 @@ import { NotionRenderer } from 'react-notion-x'
 import dynamic from 'next/dynamic'
 import mediumZoom from '@fisch0920/medium-zoom'
 import React from 'react'
-import { isBrowser } from '@/lib/utils'
+import { isBrowser } from '/lib/utils'
 import { Code } from 'react-notion-x/build/third-party/code'
 import TweetEmbed from 'react-tweet-embed'
 
 import 'katex/dist/katex.min.css'
-import { mapImgUrl } from '@/lib/notion/mapImage'
+import { mapImgUrl } from '/lib/notion/mapImage'
 
 const Equation = dynamic(() =>
-  import('@/components/Equation').then(async (m) => {
+  import('/components/Equation').then(async (m) => {
     // 化学方程式
-    await import('@/lib/mhchem')
+    await import('/lib/mhchem')
     return m.Equation
   })
 )
@@ -24,8 +24,8 @@ const Pdf = dynamic(
 )
 
 // https://github.com/txs
-// import PrismMac from '@/components/PrismMac'
-const PrismMac = dynamic(() => import('@/components/PrismMac'), {
+// import PrismMac from '/components/PrismMac'
+const PrismMac = dynamic(() => import('/components/PrismMac'), {
   ssr: true
 })
 

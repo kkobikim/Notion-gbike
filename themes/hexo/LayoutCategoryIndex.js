@@ -1,4 +1,4 @@
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 import Link from 'next/link'
 import Card from './components/Card'
 import { useRouter } from 'next/router';

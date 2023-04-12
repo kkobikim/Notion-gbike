@@ -1,9 +1,9 @@
-import BLOG from '@/blog.config'
-import * as ThemeMap from '@/themes'
+import BLOG from '/blog.config'
+import * as ThemeMap from '/themes'
 import { useEffect, useState } from 'react'
 import Select from './Select'
-import { ALL_THEME } from '@/themes'
-import { useGlobal } from '@/lib/global'
+import { ALL_THEME } from '/themes'
+import { useGlobal } from '/lib/global'
 /**
  *
  * @returns 调试面板

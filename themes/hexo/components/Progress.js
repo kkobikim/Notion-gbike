@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { isBrowser } from '@/lib/utils'
+import { isBrowser } from '/lib/utils'
 
 /**
  * 顶部页面阅读进度条

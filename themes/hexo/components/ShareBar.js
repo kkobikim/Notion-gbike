@@ -1,9 +1,9 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Link from 'next/link'
 import copy from 'copy-to-clipboard'
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 
 
 const ShareBar = ({ post }) => {

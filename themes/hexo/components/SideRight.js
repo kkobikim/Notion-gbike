@@ -7,7 +7,7 @@ import { InfoCard } from './InfoCard'
 import { AnalyticsCard } from './AnalyticsCard'
 import CONFIG_HEXO from '../config_hexo'
 import HexoRecentComments from './HexoRecentComments'
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 
 /**
  * Hexo主题右侧栏

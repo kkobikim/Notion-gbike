@@ -1,8 +1,8 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import Link from 'next/link'
 import React from 'react'
 import CONFIG_HEXO from '../config_hexo'
-import NotionPage from '@/components/NotionPage'
+import NotionPage from '/components/NotionPage'
 
 const BlogPostCard = ({ post, showSummary }) => {
   const showPreview = CONFIG_HEXO.POST_LIST_PREVIEW && post.blockMap

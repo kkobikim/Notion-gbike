@@ -1,5 +1,5 @@
-import BLOG from '@/blog.config'
-import NotionPage from '@/components/NotionPage'
+import BLOG from '/blog.config'
+import NotionPage from '/components/NotionPage'
 import Link from 'next/link'
 import TagItemMini from './TagItemMini'
 

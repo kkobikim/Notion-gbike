@@ -1,8 +1,8 @@
-import BLOG from '@/blog.config'
-import { getPostBlocks } from '@/lib/notion'
-import { getGlobalNotionData } from '@/lib/notion/getNotionData'
-import { useGlobal } from '@/lib/global'
-import * as ThemeMap from '@/themes'
+import BLOG from '/blog.config'
+import { getPostBlocks } from '/lib/notion'
+import { getGlobalNotionData } from '/lib/notion/getNotionData'
+import { useGlobal } from '/lib/global'
+import * as ThemeMap from '/themes'
 
 const Page = props => {
   const { theme } = useGlobal()

@@ -1,4 +1,4 @@
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 import throttle from 'lodash.throttle'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -9,7 +9,7 @@ import SearchDrawer from './SearchDrawer'
 import MenuButtonGroupTop from './MenuButtonGroupTop'
 import MenuList from './MenuList'
 import { useRouter } from 'next/router'
-import DarkModeButton from '@/components/DarkModeButton'
+import DarkModeButton from '/components/DarkModeButton'
 import ProgressBar from 'react-progressbar-on-scroll'
 
 let windowTop = 0

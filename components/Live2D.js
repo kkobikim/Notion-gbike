@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-import BLOG from '@/blog.config'
-import { useGlobal } from '@/lib/global'
-import { loadExternalResource } from '@/lib/utils'
+import BLOG from '/blog.config'
+import { useGlobal } from '/lib/global'
+import { loadExternalResource } from '/lib/utils'
 import React from 'react'
 
 export default function Live2D() {

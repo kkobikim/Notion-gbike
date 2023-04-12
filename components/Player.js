@@ -1,5 +1,5 @@
 import React from 'react'
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 
 const Player = () => {
   const [player, setPlayer] = React.useState()

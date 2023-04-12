@@ -1,6 +1,6 @@
 import BlogPostCard from './BlogPostCard'
 import PaginationNumber from './PaginationNumber'
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import BlogPostListEmpty from './BlogPostListEmpty'
 
 /**

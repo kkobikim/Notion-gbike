@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { useGlobal } from '@/lib/global'
-import formatDate from '@/lib/formatDate'
+import { useGlobal } from '/lib/global'
+import formatDate from '/lib/formatDate'
 import JumpToContentButton from './JumpToContentButton'
 
 export default function HeaderArticle({ post, siteInfo }) {

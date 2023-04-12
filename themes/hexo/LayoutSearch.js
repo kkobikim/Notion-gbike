@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import BlogPostListPage from './components/BlogPostListPage'
 import LayoutBase from './LayoutBase'
 import SearchInput from './components/SearchInput'
-import { useGlobal } from '@/lib/global'
+import { useGlobal } from '/lib/global'
 import Card from './components/Card'
 import Link from 'next/link'
 

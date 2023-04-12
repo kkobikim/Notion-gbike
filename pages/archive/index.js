@@ -1,8 +1,8 @@
-import { getGlobalNotionData } from '@/lib/notion/getNotionData'
+import { getGlobalNotionData } from '/lib/notion/getNotionData'
 import React from 'react'
-import { useGlobal } from '@/lib/global'
-import * as ThemeMap from '@/themes'
-import BLOG from '@/blog.config'
+import { useGlobal } from '/lib/global'
+import * as ThemeMap from '/themes'
+import BLOG from '/blog.config'
 
 const ArchiveIndex = props => {
   const { theme, locale } = useGlobal()

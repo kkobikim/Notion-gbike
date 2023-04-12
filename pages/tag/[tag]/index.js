@@ -1,7 +1,7 @@
-import { useGlobal } from '@/lib/global'
-import { getGlobalNotionData } from '@/lib/notion/getNotionData'
-import * as ThemeMap from '@/themes'
-import BLOG from '@/blog.config'
+import { useGlobal } from '/lib/global'
+import { getGlobalNotionData } from '/lib/notion/getNotionData'
+import * as ThemeMap from '/themes'
+import BLOG from '/blog.config'
 
 const Tag = props => {
   const { theme } = useGlobal()

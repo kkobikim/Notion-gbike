@@ -1,8 +1,8 @@
 import React from 'react'
 import { RecentComments } from '@waline/client'
-import BLOG from '@/blog.config'
-import Card from '@/themes/hexo/components/Card'
-import { useGlobal } from '@/lib/global'
+import BLOG from '/blog.config'
+import Card from '/themes/hexo/components/Card'
+import { useGlobal } from '/lib/global'
 import Link from 'next/link'
 
 /**

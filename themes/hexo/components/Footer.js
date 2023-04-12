@@ -1,6 +1,6 @@
 import React from 'react'
-import BLOG from '@/blog.config'
-import DarkModeButton from '@/components/DarkModeButton'
+import BLOG from '/blog.config'
+import DarkModeButton from '/components/DarkModeButton'
 
 const Footer = ({ title }) => {
   return (

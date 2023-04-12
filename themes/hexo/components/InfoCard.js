@@ -1,4 +1,4 @@
-import BLOG from '@/blog.config'
+import BLOG from '/blog.config'
 import { useRouter } from 'next/router'
 import Card from './Card'
 import SocialButton from './SocialButton'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import Katex from '@/components/KatexReact'
+import Katex from '/components/KatexReact'
 import { getBlockTitle } from 'notion-utils'
 
 const katexSettings = {
