@@ -26,14 +26,7 @@ module.exports = {
     }
   },
   rules: {
-    'react/prop-types': 'off',
-    'space-before-function-paren': 0,
-    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
-    'quotes': 'off',
-    'semi': 'off',
-    'comma-dangle': 'off',
-    // 모든 규칙을 비활성화하려면 아래 라인을 사용하세요.
-    // 'off'
+     'off',
   },
   globals: {
     React: true
