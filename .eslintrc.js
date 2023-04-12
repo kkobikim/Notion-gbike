@@ -7,8 +7,10 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:@next/next/recommended',
-    'standard'
+    'standard',
+    'plugin:@typescript-eslint/recommended' // 추가
   ],
+  parser: '@typescript-eslint/parser', // 추가
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -18,7 +20,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    'react-hooks'
+    'react-hooks',
+    '@typescript-eslint' // 추가
   ],
   settings: {
     react: {
@@ -28,7 +31,7 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'space-before-function-paren': 0,
-    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/rules-of-hooks': 'error',
     'quotes': 'off',
     'semi': 'off',
     'comma-dangle': 'off'
