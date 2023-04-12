@@ -6,9 +6,7 @@
       "@/components/*": ["components/*"],
       "@/data/*": ["data/*"],
       "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"],
-      "@/blog.config": ["./blog.config"],
-      "@/themes/*": ["themes/*"]
+      "@/styles/*": ["styles/*"]
     }
   }
 }
