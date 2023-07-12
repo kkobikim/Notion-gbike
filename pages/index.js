@@ -1,14 +1,82 @@
-import { redirect } from 'next/dist/next-server/server/api-utils'
-import { ServerResponse } from 'http'
-import { IncomingMessage } from 'http'
+import BLOG from '/blog.config'
+import { getPostBlocks } from '/lib/notion'
+import { getGlobalNotionData } from '/lib/notion/getNotionData'
+import * as ThemeMap from '/themes'
+import { useGlobal } from '/lib/global'
+import { generateRss } from '/lib/rss'
+import { generateRobotsTxt } from '/lib/robots.txt'
+import { useRouter } from 'next/router'
 
-export async function getServerSideProps({ res }) {
-  res.setHeader('location', 'https://gcoo.io/kr/blog')
-  res.statusCode = 302
-  res.end()
-  return { props: {} }
+const Index = props => {
+  const { theme } = useGlobal()
+  const ThemeComponents = ThemeMap[theme]
+  return <ThemeComponents.LayoutIndex {...props} />
 }
 
-const Index = () => null
+export async function getStaticProps() {
+  const from = 'index'
+  const props = await getGlobalNotionData({ from })
 
-export default Index
+  const { siteInfo } = props
+  props.posts = props.allPages.filter(
+    page => page.type === 'Post' && page.status === 'Published'
+  )
+
+  const meta = {
+    title: `${siteInfo?.title} | ${siteInfo?.description}`,
+    description: siteInfo?.description,
+    image: siteInfo?.pageCover,
+    slug: '',
+    type: 'website'
+  }
+  // 处理分页
+  if (BLOG.POST_LIST_STYLE === 'scroll') {
+    // 滚动列表默认给前端返回所有数据
+  } else if (BLOG.POST_LIST_STYLE === 'page') {
+    props.posts = props.posts?.slice(0, BLOG.POSTS_PER_PAGE)
+  }
+
+  // 预览文章内容
+  if (BLOG.POST_LIST_PREVIEW === 'true') {
+    for (const i in props.posts) {
+      const post = props.posts[i]
+      if (post.password && post.password !== '') {
+        continue
+      }
+      post.blockMap = await getPostBlocks(
+        post.id,
+        'slug',
+        BLOG.POST_PREVIEW_LINES
+      )
+    }
+  }
+
+  // 生成robotTxt
+  generateRobotsTxt()
+  // 生成Feed订阅
+  if (JSON.parse(BLOG.ENABLE_RSS)) {
+    generateRss(props?.latestPosts || [])
+  }
+
+  delete props.allPages
+
+  return {
+    props: {
+      meta,
+      ...props
+    },
+    revalidate: parseInt(BLOG.NEXT_REVALIDATE_SECOND)
+  }
+}
+
+const Redirect = () => {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push('https://gcoo.io/kr/blog')
+  }, [])
+
+  return null
+}
+
+export default process.env.NODE_ENV === 'production' ? Redirect : Index
